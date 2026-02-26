@@ -1,5 +1,5 @@
-from app.core.db import DB
-db = DB()
+# from app.core.db import DB
+# db = DB()
 
 def get_db():
     return db
