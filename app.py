@@ -2,7 +2,10 @@ from flask import Flask, send_file, jsonify, request
 import os
 from datetime import datetime
 
+from log import Log
+
 app = Flask(__name__)
+log = Log()
 
 # Configuration
 FILE_PATH = '/data/download/wow.zip'  # Change this to your file path
@@ -25,7 +28,7 @@ def home():
         }
     })
 
-@app.route('/download')
+@app.route('/how-wow')
 def download():
     if not os.path.exists(FILE_PATH):
         return jsonify({'error': 'File not found'}), 404
@@ -37,6 +40,7 @@ def download():
     # Get client IP for logging
     client_ip = request.headers.get('X-Forwarded-For', request.remote_addr)
     print(f"Download #{stats['total_downloads']} - IP: {client_ip} - {datetime.now()}")
+    log.info(f"Download #{stats['total_downloads']} - IP: {client_ip} - {datetime.now()}")
     
     return send_file(
         FILE_PATH,
