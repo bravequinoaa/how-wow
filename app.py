@@ -5,7 +5,7 @@ from datetime import datetime
 from log import Log
 
 app = Flask(__name__)
-log = Log()
+#log = Log()
 
 # Configuration
 FILE_PATH = '/data/download/wow.zip'  # Change this to your file path
