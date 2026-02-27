@@ -22,7 +22,7 @@ def home():
     return jsonify({
         'status': 'online',
         'endpoints': {
-            'download': '/download',
+            'how-wow': '/how-wow',
             'stats': '/stats',
             'info': '/info'
         }
